@@ -1,0 +1,29 @@
+Generic single-database configuration.
+
+# Description of the alembic folder
+
+The `alembic` folder contains scripts and configuration for database migrations.
+
+- Alembic is used to manage the PostgreSQL (and compatible DBMS) database schema.
+- All changes to the database structure (creation/modification of tables, indexes, etc.) are processed as migrations.
+- The database connection configuration is taken from the environment variables (see `.env`).
+- To apply migrations, use:
+
+```bash
+alembic upgrade head
+```
+
+or via Docker Compose:
+
+```bash
+docker-compose exec backend alembic upgrade head
+```
+
+- To generate a new migration:
+```bash
+alembic revision --autogenerate -m "change_description"
+```
+
+- All migrations must be tested on SQLite and PostgreSQL.
+
+---
